@@ -6,7 +6,7 @@ import { Card } from '~/components'
 function App() {
   return (
     <main className='px-4 pt-5 mx-auto max-w-2xl'>
-      <ul className='grid grid-cols-2 gap-[18px]'>
+      <ul className='grid grid-cols-1 md:grid-cols-2 gap-[18px]'>
         {news.map((article) => (
           <Card data={article} key={article.id} />
         ))}
