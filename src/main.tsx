@@ -1,4 +1,4 @@
-import 'tailwindcss/tailwind.css'
+import '~/assets/styles.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'

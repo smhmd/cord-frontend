@@ -1,0 +1,105 @@
+:root {
+  /* colors defined by their R G and B, to support adding opacity on the fly: rgb(var(--color) / 0.1) */
+  --purple: 115 113 238;
+  --white: 255 255 255;
+  --gray-50: 249 250 251;
+  --gray-100: 242 242 242;
+  --gray-200: 233 233 233;
+}
+
+body {
+  background-color: rgb(var(--gray-100));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.25rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.125rem;
+}
+
+.card--outer {
+  border-radius: 0.375rem;
+  border-top-right-radius: 1rem;
+  border-width: 1px;
+  border-color: rgb(var(--gray-200));
+  background-color: rgb(var(--white));
+  box-shadow: 0 1px 2px 0 rgb(var(--gray-50));
+  transition-property: box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.card--outer:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 4px 6px -1px rgb(var(--gray-200) / 0.4),
+    0 2px 4px -2px rgb(var(--gray-200) / 0.4);
+}
+
+.card--inner {
+  display: flex;
+}
+
+/* add 10px between all visible children of .card--inner */
+.card--inner > :not([hidden]) ~ :not([hidden]) {
+  margin-right: 0.625rem;
+}
+
+.card--inner {
+  padding: 0.5rem;
+  padding-right: 1rem;
+}
+
+.card--inner-right {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 0.1875rem;
+  padding-bottom: 0.1875rem;
+}
+
+.card--inner-headline {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* clamp the headline to two lines. https://caniuse.com/css-line-clamp */
+  -webkit-line-clamp: 2;
+}
+
+.card--inner-tag {
+  font-size: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: rgb(var(--purple));
+}
+
+.card--inner-left {
+  flex-shrink: 0;
+}
+
+.card--inner-image {
+  height: 5rem;
+  width: 8.125rem;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
