@@ -8,4 +8,4 @@ const news = Array.from({ length: 4 }, () => ({
   thumbnail: faker.image.image(),
 }))
 
-fs.writeFileSync('./src/assets/example.json', JSON.stringify(news))
+fs.writeFileSync('./src/assets/example.json', JSON.stringify(news, false, 2))
